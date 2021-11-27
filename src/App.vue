@@ -9,6 +9,7 @@ import HeaderComponent from './components/HeaderComponent.vue';
   <section class="todo">
     <HeaderComponent />
     <InputTodoComponent />
+    
   </section>
 </template>
 
@@ -22,20 +23,20 @@ body {
 
 /* Define styles for the default root window element */
 :root {
-  --text: #0a0a0a;
+  --default-text: hsl(235, 19%, 35%);
   --background: #ffffff;
   --background-header-mobile-image: url("./assets/images/bg-mobile-light.jpg");
   --background-header-desktop-image: url("../assets/images/bg-mobile-light.jpg");
-  --backgroun-card: #FAFAFA;
+  --background-card: #FAFAFA;
 }
 
 /* Define styles for the root window with dark - mode preference */
 :root.dark-theme {
-  --text: #9b9b9b;
-  --background: #161722;
+  --default-text: hsl(236, 33%, 92%);
+  --background: hsl(235, 21%, 11%);
   --background-header-mobile-image: url("./assets/images/bg-mobile-dark.jpg");
   --background-header-desktop-image: url("../assets/images/bg-mobile-dark.jpg");
-  --backgroun-card: #25273C;
+  --background-card: hsl(235, 24%, 19%);
 }
 
 textarea:focus, input:focus{

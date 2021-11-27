@@ -5,8 +5,8 @@
     </div>
 </template>
 
-<script setup>import { ref } from '@vue/reactivity';
-
+<script setup>
+import { ref } from '@vue/reactivity';
 
 let currentTheme = ref();
 const getMediaPreference = () => {
@@ -55,7 +55,7 @@ const getImage = () => {
         display: grid;
         grid-auto-flow: column;
         height: fit-content;
-        padding: 49px 24px;
+        padding: 49px 24px 22px;
         > img {
             justify-self: end;
             width: 26px;
