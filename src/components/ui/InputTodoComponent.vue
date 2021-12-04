@@ -1,0 +1,48 @@
+<script setup>
+import CheckboxTodoComponent from './CheckboxTodoComponent.vue';
+
+defineProps({
+    placeholder: {
+        type: String,
+        required: false,
+        default: () => 'Create a new todo...'
+    }
+});
+
+</script>
+
+<template>
+    <div class="todo__input">
+        <div class="todo__input-check">
+        <CheckboxTodoComponent :id="`base-check`" :disabled="true" />
+        </div>
+        <input :placeholder="placeholder" type="text" class="todo__input-text" />
+    </div>
+</template>
+
+<style lang="scss">
+.todo {
+    &__input {
+        width: 100%;
+        position: relative;
+        padding: 10px 26px 10px;
+        box-sizing: border-box;
+        &-text {
+            font-family: "Josefin Sans", "Roboto", sans-serif;
+            color: var(--default-text);
+            background: var(--background-card);
+            box-sizing: border-box;
+            width: 100%;
+            padding: 17px 52px;
+            border: 0;
+            border-radius: 6px;
+            caret-color: hsl(220, 98%, 61%);
+        }
+        &-check {
+            position: absolute;
+            left: 40px;
+            top: 20px;
+        }
+    }
+}
+</style>
