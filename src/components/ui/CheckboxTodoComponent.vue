@@ -32,7 +32,6 @@ const { value, disabled, id } = defineProps({
 const emit = defineEmits(['update:value']);
 
 function updateValue(value) {
-    console.log(value);
     emit('update:value', value);
 }
 

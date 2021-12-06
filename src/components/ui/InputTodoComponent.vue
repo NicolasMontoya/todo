@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from '@vue/reactivity';
 import CheckboxTodoComponent from './CheckboxTodoComponent.vue';
 
 defineProps({
@@ -9,6 +10,14 @@ defineProps({
     }
 });
 
+const emit = defineEmits(['save']);
+const inputData = ref('');
+
+const saveList = () => {
+    emit('save', inputData.value);
+    inputData.value = '';
+} ;
+
 </script>
 
 <template>
@@ -16,7 +25,7 @@ defineProps({
         <div class="todo__input-check">
         <CheckboxTodoComponent :id="`base-check`" :disabled="true" />
         </div>
-        <input :placeholder="placeholder" type="text" class="todo__input-text" />
+        <input v-model="inputData" @keydown.enter="saveList" :placeholder="placeholder" type="text" class="todo__input-text" />
     </div>
 </template>
 
