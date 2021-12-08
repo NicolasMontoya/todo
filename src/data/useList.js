@@ -2,7 +2,7 @@ import { ref, computed, reactive } from "@vue/reactivity";
 
 export const useTodoList = () => {
   // Store data
-  let lists = reactive([]);
+  let lists = ref([]);
   const filter = ref("all");
 
   // Getters
@@ -15,25 +15,26 @@ export const useTodoList = () => {
       return element.completed;
     }
   };
-  const currentList = computed(() => lists.filter(predicate));
-  const counter = computed(() => lists.filter(predicate).filter(element => !element.completed).length);
+  const currentList = computed(() => lists.value.filter(predicate));
+  const counter = computed(() => lists.value.filter(predicate).filter(element => !element.completed).length);
 
   // Mutations
   const addList = (todo) => {
-    lists.push({
-      idx: lists.length,
+    lists.value.push({
+      idx: lists.value.length,
       completed: false,
       text: todo,
     });
   };
   const removeList = (indexToRemove) => {
-      console.log(lists);
-    const index = lists.indexOf(lists.find(element => element.idx === indexToRemove));
-    lists.splice(index, 1);
+    lists.value = lists.value.filter(element => element.idx !== indexToRemove);
   };
   const setFilter = (value) => {
     filter.value = value;
   };
+  const clearCompleted = () => {
+    lists.value = lists.value.filter(element => !element.completed);
+  }
 
   return {
     filter,
@@ -42,5 +43,6 @@ export const useTodoList = () => {
     addList,
     removeList,
     setFilter,
+    clearCompleted
   };
 };

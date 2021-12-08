@@ -77,15 +77,11 @@ const getImage = () => {
   .todo {
     &__header {
       grid-column: 2;
-      > img {
-        width: 40px;
-        height: 40px;
-      }
+      padding: 84px 24px 30px;
     }
     &__title {
       color: white;
       letter-spacing: 1rem;
-      font-size: 3rem;
       margin: 0;
     }
   }

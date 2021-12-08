@@ -3,10 +3,9 @@ import InputTodoComponent from './components/ui/InputTodoComponent.vue';
 import HeaderComponent from './components/todo/HeaderComponent.vue';
 import ListComponent from './components/todo/ListComponent.vue';
 import NavigationComponent from './components/todo/NavigationComponent.vue';
-import { ref } from '@vue/reactivity';
 import { useTodoList } from './data/useList';
 
-const { currentList, counter, addList, removeList, filter, setFilter } = useTodoList();
+const { currentList, counter, addList, removeList, filter, setFilter, clearCompleted } = useTodoList();
 
 </script>
 
@@ -14,8 +13,8 @@ const { currentList, counter, addList, removeList, filter, setFilter } = useTodo
   <section class="todo">
     <HeaderComponent />
     <InputTodoComponent @save="addList"  />
-    <ListComponent :tasks="currentList" :counter="counter" @remove="removeList" />
-    <NavigationComponent :currentFilter="filter" @changeFilter="setFilter" />
+    <ListComponent :tasks="currentList" :counter="counter" @remove="removeList" @clearCompleted="clearCompleted" />
+    <NavigationComponent :currentFilter="filter" :counter="counter" @changeFilter="setFilter" @clearCompleted="clearCompleted" />
   </section>
 </template>
 
@@ -49,10 +48,10 @@ body {
   --navbar-text: hsl(236, 9%, 61%);
   --border: hsl(236, 33%, 92%);
   --active-text: hsl(220, 98%, 61%);
-  --background: #ffffff;
+  --background: rgba(229, 226, 226, 0.438);
   --background-header-mobile-image: url("./assets/images/bg-mobile-light.jpg");
-  --background-header-desktop-image: url("../assets/images/bg-mobile-light.jpg");
-  --background-card: #fafafa;
+  --background-header-desktop-image: url("./assets/images/bg-desktop-light.jpg");
+  --background-card: #fff;
 }
 
 /* Define styles for the root window with dark - mode preference */
@@ -64,7 +63,7 @@ body {
   --background: hsl(235, 21%, 11%);
   --active-text: hsl(220, 98%, 61%);
   --background-header-mobile-image: url("./assets/images/bg-mobile-dark.jpg");
-  --background-header-desktop-image: url("../assets/images/bg-mobile-dark.jpg");
+  --background-header-desktop-image: url("./assets/images/bg-desktop-dark.jpg");
   --background-card: hsl(235, 24%, 19%);
 }
 
@@ -81,7 +80,9 @@ input:focus {
   margin: 0;
   padding: 0;
   background: var(--background);
-  .todo {
+}
+
+.todo {
     height: 100vh;
     width: 100%;
     background-image: var(--background-header-mobile-image);
@@ -97,10 +98,11 @@ input:focus {
       background-image: var(--background-header-desktop-image);
       background-repeat: no-repeat;
       background-size: 100% 300px;
-      display: grid;
-      grid-auto-flow: column;
-      grid-template-columns: 1fr 1.2fr 1fr;
+      display: flex;
+      flex-direction: column;
+      padding-left: 26rem;
+      padding-right: 26rem;
+      box-sizing: border-box;
     }
   }
-}
 </style>

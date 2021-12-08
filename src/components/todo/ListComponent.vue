@@ -11,13 +11,12 @@
             </button>
         </article>
         <div class="list__summary">
-            <p>{{ counter }} items</p>
-            <p>Clear completed</p>
+            <p>{{ counter }} items left</p>
+            <p @click="emit('clearCompleted')">Clear completed</p>
         </div>
     </div>
 </template>
 <script setup>
-import { computed } from "@vue/reactivity";
 import CheckboxTodoComponent from "../ui/CheckboxTodoComponent.vue";
 
 const { tasks, counter } = defineProps({
@@ -27,7 +26,7 @@ const { tasks, counter } = defineProps({
 
 console.log(counter);
 
-const emit = defineEmits(['remove']);
+const emit = defineEmits(['remove', 'clearCompleted']);
 
 </script>
 <style lang="scss">
@@ -35,7 +34,7 @@ const emit = defineEmits(['remove']);
     &__container {
         background: var(--background-card);
         box-sizing: border-box;
-        margin: 10px 26px;
+        margin: 10px 24px;
         border-radius: 0.6rem;
     }
     &__element {
@@ -83,13 +82,21 @@ const emit = defineEmits(['remove']);
     }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 600px) {
     .list {
+        &__container {
+            margin-bottom: 0;
+            border-end-start-radius: 0;
+            border-end-end-radius: 0;
+        }
         &__element:hover > &__remove {
             visibility: visible;
         }
         &__remove {
             visibility: hidden;
+        }
+        &__summary {
+            display: none;
         }
     }
 }
