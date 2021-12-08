@@ -15,6 +15,7 @@ const { currentList, counter, addList, removeList, filter, setFilter, clearCompl
     <InputTodoComponent @save="addList"  />
     <ListComponent :tasks="currentList" :counter="counter" @remove="removeList" @clearCompleted="clearCompleted" />
     <NavigationComponent :currentFilter="filter" :counter="counter" @changeFilter="setFilter" @clearCompleted="clearCompleted" />
+    <p class="todo__message">Drag and drop to reorder list</p>
   </section>
 </template>
 
@@ -59,7 +60,7 @@ body {
   --default-text: hsl(236, 33%, 92%);
     --inactive-text: #a9a9a993;
   --navbar-text: #a9a9a993;
-  --border: #a9a9a993;
+  --border: #a9a9a92f;
   --background: hsl(235, 21%, 11%);
   --active-text: hsl(220, 98%, 61%);
   --background-header-mobile-image: url("./assets/images/bg-mobile-dark.jpg");
@@ -89,6 +90,13 @@ input:focus {
     background-repeat: no-repeat;
     background-size: 100% 200px;
     display: block;
+    &__message {
+      font-size: 12px;
+      margin: 0 auto;
+      margin-top: 20px;
+      color: var(--inactive-text);
+      text-align: center;
+    }
   }
   @media screen and (min-width: 600px) {
     .todo {

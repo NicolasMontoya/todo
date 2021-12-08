@@ -49,7 +49,7 @@ function changeFilter(filter) {
         background: var(--background-card);
         list-style: none;
         border-radius: 0.5rem;
-        padding: 20px;
+        padding: 15px;
         margin: 24px;
         font-size: 12px;
         gap: 12px;

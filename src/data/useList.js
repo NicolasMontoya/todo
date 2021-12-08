@@ -2,7 +2,38 @@ import { ref, computed, reactive } from "@vue/reactivity";
 
 export const useTodoList = () => {
   // Store data
-  let lists = ref([]);
+  let lists = ref([
+    {
+      idx: 1,
+      completed: true,
+      text: 'Complete online JavaScript course'
+    },
+    {
+      idx: 2,
+      completed: false,
+      text: 'Jog around the park 3x'
+    },
+    {
+      idx: 3,
+      completed: false,
+      text: '10 minutes meditation'
+    },
+    {
+      idx: 4,
+      completed: false,
+      text: 'Read for 1 hour'
+    },
+    {
+      idx: 5,
+      completed: false,
+      text: 'Pick up groceries'
+    },
+    {
+      idx: 6,
+      completed: false,
+      text: 'Complete Todo App on Frontend Mentor'
+    }
+  ]);
   const filter = ref("all");
 
   // Getters

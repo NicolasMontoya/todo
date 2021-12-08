@@ -9,16 +9,6 @@
 import { ref } from '@vue/reactivity';
 
 let currentTheme = ref();
-const getMediaPreference = () => {
-  const hasDarkPreference = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches;
-  if (hasDarkPreference) {
-    return "dark-theme";
-  } else {
-    return "light-theme";
-  }
-}
 
 const setTheme = (theme) => {
   currentTheme.value = theme;
@@ -26,7 +16,7 @@ const setTheme = (theme) => {
   document.documentElement.className = theme;
 }
 
-setTheme(getMediaPreference());
+setTheme('dark-theme');
 
 const toggleTheme = () => {
   const activeTheme = localStorage.getItem("user-theme");
@@ -80,6 +70,7 @@ const getImage = () => {
       padding: 84px 24px 30px;
     }
     &__title {
+      font-size: 40px;
       color: white;
       letter-spacing: 1rem;
       margin: 0;

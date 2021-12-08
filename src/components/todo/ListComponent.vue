@@ -43,7 +43,7 @@ const emit = defineEmits(['remove', 'clearCompleted']);
         flex-direction: row;
         align-items: center;
         gap: 10px;
-        padding: 10px;
+        padding: 15px;
         border-bottom: 1px solid var(--border);
         cursor: pointer;
         * {

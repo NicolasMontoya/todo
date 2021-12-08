@@ -42,7 +42,7 @@ const saveList = () => {
             background: var(--background-card);
             box-sizing: border-box;
             width: 100%;
-            padding: 17px 52px;
+            padding: 20px 52px;
             border: 0;
             border-radius: 6px;
             caret-color: hsl(220, 98%, 61%);
@@ -50,7 +50,7 @@ const saveList = () => {
         &-check {
             position: absolute;
             left: 40px;
-            top: 20px;
+            top: 25px;
         }
     }
 }
